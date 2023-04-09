@@ -1,0 +1,348 @@
+/* 
+FILTERS : 
+to set filters to the imges ; fillter: blur(4px) / graScale(100%) . if no need (0) .
+
+GRAIENTS : tadaroj l alwen 
+ background-img :linear-Gradient(Direction || Angle , color stop1),color stop 2 ,....) .
+
+CARET COLOR : red; to change color of the cursor .
+
+POINTER-EVENT =none; : it will ignore any events upon this elements (link, button ...) .
+
+GRID :
+  Parent : 
+    - Display: grid | inline-grid
+    - grid-template-columns: => [Number Of Column In]; => [Px, %, Fraction, Auto, repeat(),Mix]
+    - grid-template-rows: => [Number Of Rows Height In]; => [Px, %, Fraction, Auto, repeat(),Mix]
+    - row-gap :20px; => space between Rows
+    - column-gap :20px; => space between Columns
+    => gap: 20px 20px; It's The Short Hand Of (column || row -gap )
+    - justify-content: flex-start ... (bye default control the width )
+    - aline-content: space-between ... (bye default control the height)
+    - grid-template-area: "head head nav nav nav " , " side side content content content "
+    !! fraction is Greedy(tama3) , Auto is Shy => auto take just the distance who fit the content within the column ,
+       wheras Fraction take all remained size .
+    Child :
+    - grid-area: "head";[grid-row-start][grid-column-start][grid-row-end][grid-column-end] give him the name who i have being specified to the element in grid-template-area .
+    - grid-row : 1/span 3 ; [grid-row-start] at 1 ,[grid-row-end] (will collect 3 item)
+    - grid-column : span 3 ; start at 1 , end (will collect 3 item)
+                - 2/4 ; start at sec column and will end at the breack point of 4 (will collaps 3 item after the first)
+    - grid-template-column: repeat(Auto-fill , minmax(200px, 1fr)) ; if any empty space will fill 1fr till the space full .
+    -order:integer; if (-) neg int it will revert the place
+
+    read : Auto-fit , mesure character(cs) . 
+*/
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root{
+  --maincolor:#23b150;
+}
+/* large screen */
+/* @media (min-Width:900px), (max-Width:200px){ */
+  .description {
+    background-color:hsl(0, 0%, 85%);
+  }
+header h1{
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+}
+header .navbar{
+  width: 100%;
+  height: 40px;
+  border: 3px solid var(--maincolor,violet);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+}
+header .navbar img{
+  width:30px;
+  position: absolute;
+  left: 27px;
+}
+header .navbar h2{
+  font-size: 15px;
+  font-weight: 15;
+  position: absolute;
+  left: 76px;
+  color:var(--maincolor);
+  font-family: sans-serif;
+}
+header .links{
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+} 
+header .links li{
+margin: 10px;
+list-style: none;
+}
+header .links .line::after{
+  content: "";
+  height: 16px;
+  position: absolute;
+  border: 1px solid var(--maincolor);
+  top: 9px;
+  right: 126px; 
+}
+
+.description {
+  margin-bottom:20px ;
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  gap: 12px;
+
+}
+.description h2{
+  grid-column: 4/10;
+  text-align: center;
+  padding: 20px;
+  font-size: 22px;
+
+}
+.description .des1{
+  grid-column: 5/9;
+
+  padding: 10px;
+  margin: 20px auto;
+  border-top: 3px solid var(--maincolor);
+  border-bottom: 3px solid var(--maincolor);
+}
+.description .des2{
+  grid-column: 2/12;
+  padding: 10px;
+  font-size: 13px;
+  height: fit-content;
+
+}
+.description .des2 span{
+  font-size: 15px;
+  font-weight: 15;
+}
+
+.keys{
+  grid-column: 1/6;
+  padding: 20px;
+  position: relative;
+  height: fit-content;
+  margin-top: 20px;
+
+}
+.keys::after{
+  content: "";
+  position: absolute;
+  left: 25px;
+  width: 30px;
+  top: 8px;
+  height: 30px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../imges/Icon1_03.png);
+  background-size: cover;
+}
+
+.keys::before{
+  content: "KEY BENEFITS OF THE FCTIONAL AREAS KPI DICTIONARY";
+  font-size: 12px;
+  font-family: sans-serif;
+  position: absolute;
+  left: 84px;
+  top: 12px;
+  font-weight: 600;
+}
+.keyss{
+  height: fit-content;
+  grid-column: 2/6;
+  
+  margin-top: 20px;
+}
+.keyss p{
+  margin-bottom: 12px;
+
+
+}
+.keyss span{
+  color: var(--maincolor);
+  font-weight: 600;
+}
+.icon{
+  grid-row: 4/7;
+  grid-column: 6/9;
+  position: relative;
+}
+.arrow{
+  color: white;
+  background-color: rgb(200, 200, 33);
+  width: 642px;
+  height: 30px;
+  position: absolute;
+  bottom: -150px;
+  left: 300px;
+  z-index: 2;
+  display: flex;
+  padding: 0px;
+  align-items: center;
+}
+.arrow::before{
+  content: "";
+  color: white;
+  background-color: rgb(200, 200, 33);
+  width: 52px;
+  height: 30px;
+  position: absolute;
+  left: -15px;
+  transform: skewX(-37deg);
+  z-index: -1;
+}
+.arrow::after{
+  content: "";
+  width: 17px;
+  height: 17px;
+  background-color: rgb(200, 200, 33);
+  border-right: 5px solid rgb(132, 115, 15);
+  border-top: 5px solid rgb(132, 115, 15);
+  position: absolute;
+  top: 4px;
+  right: -11px;
+  transform: rotateZ(46deg);
+  z-index: -1;
+}
+.register{
+  width: 300px;
+  height: 350px;
+  background-color: white;
+  border: 1px solid;
+  margin-right: -216px;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: center;
+  bottom: -138px;
+  border-radius: 9px;
+  right: 270px;
+
+}
+.register h3{
+  font-size: 15px;
+    font-family: sans-serif;
+    color: var(--maincolor);
+    font-weight: initial;
+    text-align: center;
+    padding: 5px;
+}
+.register p{
+  font-family: sans-serif;
+  text-align: center;
+}
+.register form{
+  width: 90%;
+  margin: 15px;
+
+  }
+
+.register form input{
+  width: 100%;
+  margin: 2px;
+}
+#prefix{
+  width: 50px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;/*to ensure that the two element will take place beside each other verticaly*/
+}
+
+#phnb{
+  width: 206px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.register #btn{
+  position: absolute;
+    bottom: 23px;
+    left: 73px;
+    height: 28px;
+    width: 158px;
+    background-color: var(--maincolor);
+    border-radius: 5px;
+    color: white;
+    border: none;
+
+}
+.last{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: auto 1fr 1fr;
+}
+.lhead{
+  font-family: sans-serif;
+  color: var(--maincolor);
+  font-weight: 500;
+  margin: 20px;
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+.last div{
+  width: 150px;
+  text-align: center;
+}
+.last figcaption{
+  font-family: sans-serif;
+  color: var(--maincolor);
+  font-weight: 600;
+  text-align: center;
+}
+
+.one{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.two{
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+.three{
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+.four{
+  grid-column: 4/5;
+  grid-row: 2/3;
+}
+.five{
+  grid-column: 5/6;
+  grid-row: 2/3;
+}
+.contact{
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  background-color: black;
+  border-right: 5px solid var(--maincolor);
+  color: white;
+  align-items: center;
+}
+.contact h3{
+  font-family: sans-serif;
+  font-weight: 500;
+  margin-left: 38px;
+  margin-top: -25px;
+}
+.contact p{
+  font-size: 13px;
+  margin: 10px;
+}
+footer p{
+  text-align: center;
+  margin: 10px;
+}
+/* } */
+
+
+
